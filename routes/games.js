@@ -10,6 +10,15 @@ router.get("/view", (req, res) => {
   res.render("games", { games });
 });
 
+router.get("/view/:id", (req,res) => {
+    const gameId = parseInt(req.params.id);
+    const game = games.find((g => g.id === gameId));
+    if(!game){
+        return res.status(404).send("Game not found");
+    }
+    res.render("game", {game});
+})
+
 router.get("/:id", (req, res) => {
   const gameId = parseInt(req.params.id);
   const game = games.find((g) => g.id === gameId);

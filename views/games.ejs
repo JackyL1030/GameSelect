@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games List</title>
 </head>
+
 <body>
-  <h1>Video Game Database</h1>
-  <ul>
-    <% games.forEach(game => { %>
-      <li>
-        <%= game.title %>
-      </li>
-    <% }) %>
-  </ul>
+    <h1>Video Game Database</h1>
+    <ul>
+        <% games.forEach(game=> { %>
+            <li>
+                <a href="/games/view/<%= game.id %>">
+                    <%= game.title %>
+                </a><br>
+                Genre: <%= game.genre %><br>
+                    Year: <%= game.releaseYear %><br>
+                        Rating: <%= game.rating %>/10
+            </li>
+            <hr>
+            <% }) %>
+    </ul>
 </body>
+
 </html>
