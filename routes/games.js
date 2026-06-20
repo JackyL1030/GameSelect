@@ -6,6 +6,10 @@ router.get("/", (req, res) => {
   res.json(games);
 });
 
+router.get("/view", (req, res) => {
+  res.render("games", { games });
+});
+
 router.get("/:id", (req, res) => {
   const gameId = parseInt(req.params.id);
   const game = games.find((g) => g.id === gameId);
