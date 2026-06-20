@@ -5,6 +5,8 @@ import games from "./data/games.js";
 const app = express();
 const PORT = 3000;
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.send("Video Game Database Server Running");
 });
