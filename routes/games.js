@@ -34,4 +34,26 @@ router.post("/", (req, res) => {
   res.status(201).json(newGame);
 });
 
+router.put("/:id", (req, res) => {
+  const gameId = parseInt(req.params.id);
+  const { title, genre, releaseYear, rating } = req.body;
+  if (!title || !genre || !releaseYear || !rating) {
+    return res.status(400).json({
+      message: "Missing required fields",
+    });
+  }
+  const gameIndex = games.findIndex((g) => g.id === gameId);
+  if (gameIndex === -1) {
+    return res.status(404).json({ message: "Game not found" });
+  }
+  games[gameIndex] = {
+    id: gameId,
+    title,
+    genre,
+    releaseYear,
+    rating,
+  };
+  res.json(games[gameIndex]);
+});
+
 export default router;
