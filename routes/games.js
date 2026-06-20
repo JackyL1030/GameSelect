@@ -10,7 +10,7 @@ router.get("/:id", (req, res) => {
   const gameId = parseInt(req.params.id);
   const game = games.find((g) => g.id === gameId);
   if (!game) {
-    return res.status(404).json({ Message: "Game not found" });
+    return res.status(404).json({ message: "Game not found" });
   }
   res.json(game);
 });
@@ -54,6 +54,19 @@ router.put("/:id", (req, res) => {
     rating,
   };
   res.json(games[gameIndex]);
+});
+
+router.delete("/:id", (req, res) => {
+  const gameId = parseInt(req.params.id);
+  const gameIndex = games.findIndex((g) => g.id === gameId);
+  if (gameIndex === -1) {
+    return res.status(404).json({ message: "Game not found" });
+  }
+  const deletedGame = games.splice(gameIndex, 1);
+  res.json({
+    message: "Game deleted successfully",
+    game: deletedGame[0],
+  });
 });
 
 export default router;
