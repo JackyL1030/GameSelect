@@ -34,6 +34,13 @@ app.use("/games", gamesRouter);
 app.use("/reviews", reviewsRouter);
 app.use("/users", usersRouter);
 
+app.use((err, req, res, next) => {
+  console.log("Error:", err);
+  res.status(500).json({
+    message: "Server error",
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
