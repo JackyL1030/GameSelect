@@ -3,6 +3,13 @@ import games from "../data/games.js";
 const router = express.Router();
 
 router.get("/", (req, res) => {
+  const genre = req.query.genre;
+  if (genre) {
+    const filtered = games.filter(
+      (g) => g.genre.toLowerCase() === genre.toLowerCase(),
+    );
+      return res.json(filtered);
+  }
   res.json(games);
 });
 
@@ -10,14 +17,14 @@ router.get("/view", (req, res) => {
   res.render("games", { games });
 });
 
-router.get("/view/:id", (req,res) => {
-    const gameId = parseInt(req.params.id);
-    const game = games.find((g => g.id === gameId));
-    if(!game){
-        return res.status(404).send("Game not found");
-    }
-    res.render("game", {game});
-})
+router.get("/view/:id", (req, res) => {
+  const gameId = parseInt(req.params.id);
+  const game = games.find((g) => g.id === gameId);
+  if (!game) {
+    return res.status(404).send("Game not found");
+  }
+  res.render("game", { game });
+});
 
 router.get("/:id", (req, res) => {
   const gameId = parseInt(req.params.id);
