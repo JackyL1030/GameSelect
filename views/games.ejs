@@ -21,5 +21,13 @@
     <hr>
     <% }) %>
   </ul>
+  <h2>Add a Game</h2>
+  <form action="/games" method="POST">
+    <input type="text" name="title" placeholder="Title" required />
+    <input type="text" name="genre" placeholder="Genre" required />
+    <input type="number" name="releaseYear" placeholder="Release Year" required />
+    <input type="number" name="rating" placeholder="Rating" required />
+    <button type="submit">Add Game</button>
+  </form>
 </body>
 </html>

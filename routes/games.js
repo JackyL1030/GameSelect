@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
     const filtered = games.filter(
       (g) => g.genre.toLowerCase() === genre.toLowerCase(),
     );
-      return res.json(filtered);
+    return res.json(filtered);
   }
   res.json(games);
 });
@@ -36,6 +36,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  //console.log("BODY", req.body);
   const { title, genre, releaseYear, rating } = req.body;
   if (!title || !genre || !releaseYear || !rating) {
     return res.status(400).json({
@@ -47,11 +48,12 @@ router.post("/", (req, res) => {
     id: newId,
     title,
     genre,
-    releaseYear,
-    rating,
+    releaseYear: Number(releaseYear),
+    rating: Number(rating),
   };
   games.push(newGame);
-  res.status(201).json(newGame);
+  //res.status(201).json(newGame);
+  res.redirect("/games/view");
 });
 
 router.put("/:id", (req, res) => {
@@ -70,8 +72,8 @@ router.put("/:id", (req, res) => {
     id: gameId,
     title,
     genre,
-    releaseYear,
-    rating,
+    releaseYear: Number(releaseYear),
+    rating: Number(rating),
   };
   res.json(games[gameIndex]);
 });
