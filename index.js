@@ -3,6 +3,7 @@ import gamesRouter from './routes/games.js'
 import games from "./data/games.js";
 
 import reviewsRouter from './routes/reviews.js'
+import usersRouter from './routes/users.js'
 
 const app = express();
 const PORT = 3000;
@@ -17,8 +18,9 @@ app.get("/", (req, res) => {
   res.send("Video Game Database Server Running");
 });
 
-app.use('/games', gamesRouter)
+app.use('/games', gamesRouter);
 app.use('/reviews', reviewsRouter);
+app.use('/users',usersRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
