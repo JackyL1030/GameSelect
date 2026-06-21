@@ -1,20 +1,33 @@
 import express from "express";
-import reviews from "../data/reviews.js"
+import reviews from "../data/reviews.js";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    res.json(reviews);
-})
+  res.json(reviews);
+});
 
-router.get("/:id", (req,res) =>{
-    const reviewId = parseInt(req.params.id);
-    const review = reviews.find(r => r.id === reviewId);
-    if(!review){
-        return res.status(404).json({
-            message:"Review not found"
-        });
-    }
-    res.json(review)
-})
+router.get("/view", (req, res) => {
+  res.render("reviews", { reviews });
+});
 
-export default router; 
+router.get("/view/:id", (req, res) => {
+  const reviewId = parseInt(req.params.id);
+  const review = reviews.find((r) => r.id === reviewId);
+  if (!review) {
+    return res.status(404).send("Review not found");
+  }
+  res.render("review", { review });
+});
+
+router.get("/:id", (req, res) => {
+  const reviewId = parseInt(req.params.id);
+  const review = reviews.find((r) => r.id === reviewId);
+  if (!review) {
+    return res.status(404).json({
+      message: "Review not found",
+    });
+  }
+  res.json(review);
+});
+
+export default router;

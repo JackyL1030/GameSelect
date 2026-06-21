@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games Review</title>
+</head>
+
+<body>
+  <h1>Game Review</h1>
+  <ul>
+    <% reviews.forEach(review => { %>
+    <li>
+      <a href="/reviews/view/<%= review.id %>">
+        Review #<%= review.id %>
+      </a>
+      Score: <%= review.score %>/10
+    </li>
+    <% }) %>
+  </ul>
+  <a href="/games/view">Games</a>
+</body>
+</html>

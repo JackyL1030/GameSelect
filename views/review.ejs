@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Review</title>
+  </head>
+  <body>
+    <h1>Review #<%= review.id %></h1>
+    <p>Game ID: <%= review.gameId %></p>
+    <p>User ID: <%= review.userId %></p>
+    <p>Score: <%= review.score %>/10</p>
+    <p><%= review.comment %></p>
+    <a href="/reviews/view"> Back to Reviews </a>
+  </body>
+</html>
