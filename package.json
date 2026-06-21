@@ -14,5 +14,9 @@
     "ejs": "^6.0.1",
     "express": "^5.2.1",
     "install": "^0.13.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.4",
+    "prettier-plugin-ejs": "^1.0.3"
   }
 }
