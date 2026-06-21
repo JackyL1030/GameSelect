@@ -1,7 +1,5 @@
 import express from "express";
 import gamesRouter from "./routes/games.js";
-import games from "./data/games.js";
-
 import reviewsRouter from "./routes/reviews.js";
 import usersRouter from "./routes/users.js";
 
@@ -22,6 +20,7 @@ function logger(req, res, next) {
 
 function timeStamp(req, res, next) {
   req.time = new Date().toLocaleString();
+  console.log(req.time);
   next();
 }
 
